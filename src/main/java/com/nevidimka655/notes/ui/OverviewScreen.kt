@@ -10,34 +10,31 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
-import androidx.compose.ui.text.input.TextFieldValue
 import com.nevidimka655.notes.Notes
 import com.nevidimka655.ui.compose_core.TextFieldsDefaults
 import com.nevidimka655.ui.compose_core.theme.spaces
 
 @Composable
 fun Notes.OverviewScreen(
-    firstFieldLabel: String,
-    firstFieldValue: TextFieldValue,
-    onFirstFieldValueChange: (TextFieldValue) -> Unit,
-    secondFieldLabel: String,
-    secondFieldValue: TextFieldValue,
-    onSecondFieldValueChange: (TextFieldValue) -> Unit,
+    nameFieldLabel: String,
+    name: String,
+    onChangeName: (String) -> Unit,
+    textFieldLabel: String,
+    text: String,
+    onChangeText: (String) -> Unit,
 ) = Column(
     modifier = Modifier
-        .nestedScroll(rememberNestedScrollInteropConnection())
+        .fillMaxSize()
         .verticalScroll(rememberScrollState())
         .padding(MaterialTheme.spaces.spaceMedium),
     verticalArrangement = Arrangement.spacedBy(MaterialTheme.spaces.spaceMedium),
 ) {
     OutlinedTextField(
         modifier = Modifier.fillMaxSize(),
-        label = TextFieldsDefaults.labelText(text = firstFieldLabel),
-        value = firstFieldValue, onValueChange = onFirstFieldValueChange)
+        label = TextFieldsDefaults.labelText(text = nameFieldLabel),
+        value = name, onValueChange = onChangeName)
     OutlinedTextField(
         modifier = Modifier.fillMaxSize(),
-        label = TextFieldsDefaults.labelText(text = secondFieldLabel),
-        value = secondFieldValue, onValueChange = onSecondFieldValueChange)
+        label = TextFieldsDefaults.labelText(text = textFieldLabel),
+        value = text, onValueChange = onChangeText)
 }
