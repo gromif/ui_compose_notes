@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
     alias(libs.plugins.compose.compiler)
 }
 
@@ -29,6 +30,11 @@ kotlin {
 
 dependencies {
     api(project(mapOf("path" to ":ui:compose-core")))
+
+    // Hilt
+    ksp(libs.hilt.android.compiler)
+    ksp(libs.hilt.compiler)
+    api(libs.hilt.android)
 
     // Paging
     api(libs.paging.compose)
