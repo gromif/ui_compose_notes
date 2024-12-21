@@ -1,9 +1,9 @@
 package com.nevidimka655.notes.domain.usecase
 
-import com.nevidimka655.notes.domain.repository.NotesRepositoryDecorator
+import com.nevidimka655.notes.domain.repository.NotesRepository
 
 class UpdateNoteByIdUseCase(
-    private val repository: NotesRepositoryDecorator
+    private val repository: NotesRepository
 ) {
 
     suspend operator fun invoke(id: Long, name: String, text: String) {

@@ -2,7 +2,6 @@ package com.nevidimka655.notes.di
 
 import com.nevidimka655.notes.data.database.NotesDao
 import com.nevidimka655.notes.data.mappers.NoteItemEntityMapper
-import com.nevidimka655.notes.data.repository.NotesRepositoryDecoratorImpl
 import com.nevidimka655.notes.data.repository.NotesRepositoryProvider
 import com.nevidimka655.notes.data.repository.impl.NotesRepositoryImpl
 import dagger.Module
