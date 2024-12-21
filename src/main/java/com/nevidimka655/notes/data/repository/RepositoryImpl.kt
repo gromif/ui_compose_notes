@@ -1,4 +1,4 @@
-package com.nevidimka655.notes.data.repository.impl
+package com.nevidimka655.notes.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -6,16 +6,16 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.nevidimka655.notes.data.database.NoteItemEntity
 import com.nevidimka655.notes.data.database.NotesDao
-import com.nevidimka655.notes.data.mappers.NoteItemEntityMapper
+import com.nevidimka655.notes.data.mappers.DataToDomainMapper
 import com.nevidimka655.notes.domain.model.Note
-import com.nevidimka655.notes.domain.repository.NotesRepository
+import com.nevidimka655.notes.domain.repository.Repository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class NotesRepositoryImpl(
+class RepositoryImpl(
     private val dao: NotesDao,
-    private val noteItemEntityMapper: NoteItemEntityMapper
-) : NotesRepository {
+    private val dataToDomainMapper: DataToDomainMapper
+) : Repository {
     override suspend fun deleteById(id: Long) {
         dao.deleteById(id = id)
     }
@@ -45,7 +45,7 @@ class NotesRepositoryImpl(
 
     override suspend fun getById(id: Long): Note {
         val noteItemEntity = dao.getById(id = id)
-        return noteItemEntityMapper(item = noteItemEntity)
+        return dataToDomainMapper(item = noteItemEntity)
     }
 
     override suspend fun getByPage(
@@ -66,7 +66,7 @@ class NotesRepositoryImpl(
                 dao.listOrderDescAsc()
             }
         ).flow.map { pagingData ->
-            pagingData.map { noteItemEntityMapper(item = it) }
+            pagingData.map { dataToDomainMapper(item = it) }
         }
     }
 }

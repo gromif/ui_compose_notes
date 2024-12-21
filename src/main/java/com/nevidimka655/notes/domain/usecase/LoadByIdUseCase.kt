@@ -1,10 +1,10 @@
 package com.nevidimka655.notes.domain.usecase
 
 import com.nevidimka655.notes.domain.model.Note
-import com.nevidimka655.notes.domain.repository.NotesRepository
+import com.nevidimka655.notes.domain.repository.Repository
 
-class LoadNoteByIdUseCase(
-    private val repository: NotesRepository
+class LoadByIdUseCase(
+    private val repository: Repository
 ) {
 
     suspend operator fun invoke(id: Long): Note {

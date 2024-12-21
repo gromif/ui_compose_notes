@@ -4,10 +4,10 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nevidimka655.notes.domain.model.Note
-import com.nevidimka655.notes.domain.usecase.CreateNewNoteUseCase
+import com.nevidimka655.notes.domain.usecase.CreateUseCase
 import com.nevidimka655.notes.domain.usecase.DeleteByIdUseCase
-import com.nevidimka655.notes.domain.usecase.LoadNoteByIdUseCase
-import com.nevidimka655.notes.domain.usecase.UpdateNoteByIdUseCase
+import com.nevidimka655.notes.domain.usecase.LoadByIdUseCase
+import com.nevidimka655.notes.domain.usecase.UpdateByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -23,9 +23,9 @@ class OverviewNoteViewModel @Inject constructor(
     //@IoDispatcher // TODO(Core)
     //private val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO,
     private val state: SavedStateHandle,
-    private val createNewNoteUseCase: CreateNewNoteUseCase,
-    private val loadNoteByIdUseCase: LoadNoteByIdUseCase,
-    private val updateNoteByIdUseCase: UpdateNoteByIdUseCase,
+    private val createUseCase: CreateUseCase,
+    private val loadByIdUseCase: LoadByIdUseCase,
+    private val updateByIdUseCase: UpdateByIdUseCase,
     private val deleteByIdUseCase: DeleteByIdUseCase
 ) : ViewModel() {
     private val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO
@@ -44,7 +44,7 @@ class OverviewNoteViewModel @Inject constructor(
     suspend fun load(id: Long) {
         if (idState.value == -1L) {
             state[STATE_ID] = id
-            val note: Note = loadNoteByIdUseCase(id = id)
+            val note: Note = loadByIdUseCase(id = id)
             setName(name = note.name)
             setText(text = note.text)
         }
@@ -56,13 +56,13 @@ class OverviewNoteViewModel @Inject constructor(
 
     fun save() = viewModelScope.launch(defaultDispatcher) {
         if (idState.value != -1L) {
-            updateNoteByIdUseCase(
+            updateByIdUseCase(
                 id = idState.value,
                 name = nameState.value,
                 text = textState.value
             )
         } else {
-            createNewNoteUseCase(
+            createUseCase(
                 name = nameState.value,
                 text = textState.value
             )

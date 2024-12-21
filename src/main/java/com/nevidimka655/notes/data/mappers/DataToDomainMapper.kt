@@ -8,7 +8,7 @@ import com.nevidimka655.notes.domain.model.NoteState
 
 private const val TIME_PATTERN = "d MMMM yyyy"
 
-class NoteItemEntityMapper: Mapper<NoteItemEntity, Note> {
+class DataToDomainMapper: Mapper<NoteItemEntity, Note> {
 
     override fun invoke(item: NoteItemEntity): Note {
         return Note(

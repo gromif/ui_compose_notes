@@ -1,9 +1,9 @@
 package com.nevidimka655.notes.domain.usecase
 
-import com.nevidimka655.notes.domain.repository.NotesRepository
+import com.nevidimka655.notes.domain.repository.Repository
 
 class DeleteByIdUseCase(
-    private val repository: NotesRepository
+    private val repository: Repository
 ) {
 
     suspend operator fun invoke(id: Long) {

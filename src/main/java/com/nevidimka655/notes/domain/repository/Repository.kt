@@ -4,7 +4,7 @@ import androidx.paging.PagingData
 import com.nevidimka655.notes.domain.model.Note
 import kotlinx.coroutines.flow.Flow
 
-interface NotesRepository {
+interface Repository {
 
     suspend fun deleteById(id: Long)
 

@@ -1,16 +1,16 @@
-package com.nevidimka655.notes.data.repository.impl
+package com.nevidimka655.notes.data.repository
 
 import androidx.paging.PagingData
 import com.nevidimka655.notes.data.database.NotesDao
-import com.nevidimka655.notes.data.mappers.NoteItemEntityMapper
+import com.nevidimka655.notes.data.mappers.DataToDomainMapper
 import com.nevidimka655.notes.domain.model.Note
-import com.nevidimka655.notes.domain.repository.NotesRepository
+import com.nevidimka655.notes.domain.repository.Repository
 import kotlinx.coroutines.flow.Flow
 
-class NotesAeadRepositoryImpl(
+class RepositoryAeadImpl(
     private val dao: NotesDao,
-    private val noteItemEntityMapper: NoteItemEntityMapper
-): NotesRepository {
+    private val dataToDomainMapper: DataToDomainMapper
+): Repository {
     override suspend fun deleteById(id: Long) {
         TODO("Not yet implemented")
     }

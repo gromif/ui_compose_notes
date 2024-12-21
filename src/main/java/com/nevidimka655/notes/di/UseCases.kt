@@ -1,12 +1,12 @@
 package com.nevidimka655.notes.di
 
 import com.nevidimka655.notes.data.paging.PagingProviderImpl
-import com.nevidimka655.notes.data.repository.impl.NotesRepositoryImpl
-import com.nevidimka655.notes.domain.usecase.CreateNewNoteUseCase
+import com.nevidimka655.notes.data.repository.RepositoryImpl
+import com.nevidimka655.notes.domain.usecase.CreateUseCase
 import com.nevidimka655.notes.domain.usecase.DeleteByIdUseCase
 import com.nevidimka655.notes.domain.usecase.GetPagingUseCase
-import com.nevidimka655.notes.domain.usecase.LoadNoteByIdUseCase
-import com.nevidimka655.notes.domain.usecase.UpdateNoteByIdUseCase
+import com.nevidimka655.notes.domain.usecase.LoadByIdUseCase
+import com.nevidimka655.notes.domain.usecase.UpdateByIdUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,31 +24,31 @@ object UseCases {
     )
 
     @Provides
-    fun provideCreateNewNoteUseCase(
-        notesRepositoryImpl: NotesRepositoryImpl
-    ): CreateNewNoteUseCase = CreateNewNoteUseCase(
-        repository = notesRepositoryImpl
+    fun provideCreateUseCase(
+        repositoryImpl: RepositoryImpl
+    ): CreateUseCase = CreateUseCase(
+        repository = repositoryImpl
     )
 
     @Provides
-    fun provideLoadNoteByIdUseCase(
-        notesRepositoryImpl: NotesRepositoryImpl
-    ): LoadNoteByIdUseCase = LoadNoteByIdUseCase(
-        repository = notesRepositoryImpl
+    fun provideLoadByIdUseCase(
+        repositoryImpl: RepositoryImpl
+    ): LoadByIdUseCase = LoadByIdUseCase(
+        repository = repositoryImpl
     )
 
     @Provides
-    fun provideUpdateNoteByIdUseCase(
-        notesRepositoryImpl: NotesRepositoryImpl
-    ): UpdateNoteByIdUseCase = UpdateNoteByIdUseCase(
-        repository = notesRepositoryImpl
+    fun provideUpdateByIdUseCase(
+        repositoryImpl: RepositoryImpl
+    ): UpdateByIdUseCase = UpdateByIdUseCase(
+        repository = repositoryImpl
     )
 
     @Provides
     fun provideDeleteByIdUseCase(
-        notesRepositoryImpl: NotesRepositoryImpl
+        repositoryImpl: RepositoryImpl
     ): DeleteByIdUseCase = DeleteByIdUseCase(
-        repository = notesRepositoryImpl
+        repository = repositoryImpl
     )
 
 }
