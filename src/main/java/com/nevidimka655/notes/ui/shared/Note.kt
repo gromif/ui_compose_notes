@@ -1,4 +1,4 @@
-package com.nevidimka655.notes.ui
+package com.nevidimka655.notes.ui.shared
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -22,22 +22,20 @@ fun Notes.Note(
     title: String? = "Test title",
     summary: String? = "Test summary...",
     date: String? = "February 6 2023",
-    callback: (() -> Unit)? = null
+    onClick: (() -> Unit) = {}
 ) = ElevatedCard(
-    modifier = Modifier
-        .fillMaxWidth(),
+    modifier = Modifier.fillMaxWidth(),
     elevation = CardDefaults.elevatedCardElevation(2.dp)
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { callback?.invoke() }
+            .clickable(onClick = onClick)
             .padding(MaterialTheme.spaces.spaceMedium),
         verticalArrangement = Arrangement.spacedBy(MaterialTheme.spaces.spaceMedium)
     ) {
         if (title != null) Text(text = title, style = MaterialTheme.typography.titleMedium)
-        if (summary != null)
-            Text(text = summary, style = MaterialTheme.typography.bodyMedium)
+        if (summary != null) Text(text = summary, style = MaterialTheme.typography.bodyMedium)
         if (date != null) Text(text = date, style = MaterialTheme.typography.labelMedium)
     }
 }

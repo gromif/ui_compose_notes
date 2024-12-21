@@ -1,4 +1,4 @@
-package com.nevidimka655.notes.ui
+package com.nevidimka655.notes.ui.overview
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,7 +21,7 @@ fun Notes.OverviewScreen(
     onChangeName: (String) -> Unit,
     textFieldLabel: String,
     text: String,
-    onChangeText: (String) -> Unit,
+    onChangeText: (String) -> Unit
 ) = Column(
     modifier = Modifier
         .fillMaxSize()
