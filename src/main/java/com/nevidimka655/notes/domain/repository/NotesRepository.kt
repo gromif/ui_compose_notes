@@ -3,7 +3,6 @@ package com.nevidimka655.notes.domain.repository
 import androidx.paging.PagingSource
 import com.nevidimka655.notes.data.database.NoteItemEntity
 import com.nevidimka655.notes.data.database.tuples.TransformNotesTuple
-import com.nevidimka655.notes.domain.model.Note
 
 interface NotesRepository {
 

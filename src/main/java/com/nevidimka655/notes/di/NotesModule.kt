@@ -1,7 +1,6 @@
 package com.nevidimka655.notes.di
 
 import com.nevidimka655.notes.data.repository.NotesRepositoryDecoratorImpl
-import com.nevidimka655.notes.domain.repository.NotesRepositoryDecorator
 import com.nevidimka655.notes.domain.usecase.CreateNewNoteUseCase
 import com.nevidimka655.notes.domain.usecase.DeleteByIdUseCase
 import com.nevidimka655.notes.domain.usecase.LoadNoteByIdUseCase
