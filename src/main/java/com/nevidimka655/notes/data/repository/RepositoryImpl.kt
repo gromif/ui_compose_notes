@@ -12,7 +12,7 @@ import com.nevidimka655.notes.domain.repository.Repository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class RepositoryImpl(
+internal class RepositoryImpl(
     private val dao: NotesDao,
     private val dataToDomainMapper: DataToDomainMapper
 ) : Repository {

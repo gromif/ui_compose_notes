@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
 
-class PagingProviderImpl @Inject constructor(
+internal class PagingProviderImpl @Inject constructor(
     private val repositoryProviderImpl: RepositoryProviderImpl
 ): PagingProvider {
 

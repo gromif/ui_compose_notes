@@ -7,7 +7,7 @@ import com.nevidimka655.notes.domain.model.Note
 import com.nevidimka655.notes.domain.repository.Repository
 import kotlinx.coroutines.flow.Flow
 
-class RepositoryAeadImpl(
+internal class RepositoryAeadImpl(
     private val dao: NotesDao,
     private val dataToDomainMapper: DataToDomainMapper
 ): Repository {
