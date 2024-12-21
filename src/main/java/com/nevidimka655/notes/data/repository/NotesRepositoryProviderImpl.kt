@@ -4,7 +4,7 @@ import com.nevidimka655.notes.domain.repository.NotesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class NotesRepositoryProvider(
+class NotesRepositoryProviderImpl(
     private val repository: NotesRepository,
     //aeadInfoFlow: Flow<AeadInfo> TODO(Core)
 ) {

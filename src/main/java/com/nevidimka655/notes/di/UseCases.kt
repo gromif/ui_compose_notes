@@ -1,9 +1,10 @@
 package com.nevidimka655.notes.di
 
+import com.nevidimka655.notes.data.paging.PagingProviderImpl
 import com.nevidimka655.notes.data.repository.impl.NotesRepositoryImpl
-import com.nevidimka655.notes.domain.repository.NotesRepository
 import com.nevidimka655.notes.domain.usecase.CreateNewNoteUseCase
 import com.nevidimka655.notes.domain.usecase.DeleteByIdUseCase
+import com.nevidimka655.notes.domain.usecase.GetPagingUseCase
 import com.nevidimka655.notes.domain.usecase.LoadNoteByIdUseCase
 import com.nevidimka655.notes.domain.usecase.UpdateNoteByIdUseCase
 import dagger.Module
@@ -13,7 +14,14 @@ import dagger.hilt.android.components.ViewModelComponent
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object NotesModule {
+object UseCases {
+
+    @Provides
+    fun provideGetPagingUseCase(
+        pagingProviderImpl: PagingProviderImpl
+    ): GetPagingUseCase = GetPagingUseCase(
+        pagingProvider = pagingProviderImpl
+    )
 
     @Provides
     fun provideCreateNewNoteUseCase(

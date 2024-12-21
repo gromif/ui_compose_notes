@@ -1,9 +1,8 @@
 package com.nevidimka655.notes.domain.repository
 
-import androidx.paging.PagingSource
-import com.nevidimka655.notes.data.database.NoteItemEntity
-import com.nevidimka655.notes.data.database.tuples.TransformNotesTuple
+import androidx.paging.PagingData
 import com.nevidimka655.notes.domain.model.Note
+import kotlinx.coroutines.flow.Flow
 
 interface NotesRepository {
 
@@ -15,10 +14,8 @@ interface NotesRepository {
 
     suspend fun getById(id: Long): Note
 
-    suspend fun updateTransform(transformNotesTuple: TransformNotesTuple)
+    suspend fun getByPage(pageSize: Int, pageIndex: Int): List<Note>
 
-    suspend fun getTransformItems(pageSize: Int, pageIndex: Int): List<TransformNotesTuple>
-
-    fun listOrderDescAsc(): PagingSource<Int, NoteItemEntity>
+    fun listOrderDescAsc(): Flow<PagingData<Note>>
 
 }

@@ -1,12 +1,11 @@
 package com.nevidimka655.notes.data.repository.impl
 
-import androidx.paging.PagingSource
-import com.nevidimka655.notes.data.database.NoteItemEntity
+import androidx.paging.PagingData
 import com.nevidimka655.notes.data.database.NotesDao
-import com.nevidimka655.notes.data.database.tuples.TransformNotesTuple
 import com.nevidimka655.notes.data.mappers.NoteItemEntityMapper
 import com.nevidimka655.notes.domain.model.Note
 import com.nevidimka655.notes.domain.repository.NotesRepository
+import kotlinx.coroutines.flow.Flow
 
 class NotesAeadRepositoryImpl(
     private val dao: NotesDao,
@@ -28,18 +27,14 @@ class NotesAeadRepositoryImpl(
         TODO("Not yet implemented")
     }
 
-    override suspend fun updateTransform(transformNotesTuple: TransformNotesTuple) {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun getTransformItems(
+    override suspend fun getByPage(
         pageSize: Int,
         pageIndex: Int
-    ): List<TransformNotesTuple> {
+    ): List<Note> {
         TODO("Not yet implemented")
     }
 
-    override fun listOrderDescAsc(): PagingSource<Int, NoteItemEntity> {
+    override fun listOrderDescAsc(): Flow<PagingData<Note>> {
         TODO("Not yet implemented")
     }
 }
