@@ -1,5 +1,7 @@
 package com.nevidimka655.notes.di
 
+import com.nevidimka655.notes.data.repository.impl.NotesRepositoryImpl
+import com.nevidimka655.notes.domain.repository.NotesRepository
 import com.nevidimka655.notes.domain.usecase.CreateNewNoteUseCase
 import com.nevidimka655.notes.domain.usecase.DeleteByIdUseCase
 import com.nevidimka655.notes.domain.usecase.LoadNoteByIdUseCase
@@ -15,30 +17,30 @@ object NotesModule {
 
     @Provides
     fun provideCreateNewNoteUseCase(
-        notesRepositoryDecorator: NotesRepositoryDecoratorImpl
+        notesRepositoryImpl: NotesRepositoryImpl
     ): CreateNewNoteUseCase = CreateNewNoteUseCase(
-        repository = notesRepositoryDecorator
+        repository = notesRepositoryImpl
     )
 
     @Provides
     fun provideLoadNoteByIdUseCase(
-        notesRepositoryDecorator: NotesRepositoryDecoratorImpl
+        notesRepositoryImpl: NotesRepositoryImpl
     ): LoadNoteByIdUseCase = LoadNoteByIdUseCase(
-        repository = notesRepositoryDecorator
+        repository = notesRepositoryImpl
     )
 
     @Provides
     fun provideUpdateNoteByIdUseCase(
-        notesRepositoryDecorator: NotesRepositoryDecoratorImpl
+        notesRepositoryImpl: NotesRepositoryImpl
     ): UpdateNoteByIdUseCase = UpdateNoteByIdUseCase(
-        repository = notesRepositoryDecorator
+        repository = notesRepositoryImpl
     )
 
     @Provides
     fun provideDeleteByIdUseCase(
-        notesRepositoryDecorator: NotesRepositoryDecoratorImpl
+        notesRepositoryImpl: NotesRepositoryImpl
     ): DeleteByIdUseCase = DeleteByIdUseCase(
-        repository = notesRepositoryDecorator
+        repository = notesRepositoryImpl
     )
 
 }

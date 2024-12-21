@@ -15,25 +15,21 @@ object NotesRepositoryModule {
 
     @Provides
     fun provideNotesRepositoryProvider(
-        notesRepositoryDecoratorImpl: NotesRepositoryDecoratorImpl,
+        notesRepositoryImpl: NotesRepositoryImpl,
         //settingsDataStoreManager: SettingsDataStoreManager
     ): NotesRepositoryProvider = NotesRepositoryProvider(
-        notesRepositoryDecorator = notesRepositoryDecoratorImpl,
+        repository = notesRepositoryImpl,
         //aeadInfoFlow = settingsDataStoreManager.aeadInfoFlow
     )
 
     @Provides
-    fun provideNotesRepositoryDecorator(
-        notesRepositoryImpl: NotesRepositoryImpl,
+    fun provideNotesRepositoryImpl(
+        notes: NotesDao,
         noteItemEntityMapper: NoteItemEntityMapper
-    ): NotesRepositoryDecoratorImpl = NotesRepositoryDecoratorImpl(
-        notesRepository = notesRepositoryImpl,
+    ): NotesRepositoryImpl = NotesRepositoryImpl(
+        dao = notes,
         noteItemEntityMapper = noteItemEntityMapper
     )
-
-    @Provides
-    fun provideNotesRepositoryImpl(notes: NotesDao): NotesRepositoryImpl =
-        NotesRepositoryImpl(dao = notes)
 
 
     @Provides
