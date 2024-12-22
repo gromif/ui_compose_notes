@@ -1,6 +1,5 @@
 plugins {
-    alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.astracrypt.android.library)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.compose.compiler)
@@ -8,28 +7,14 @@ plugins {
 
 android {
     namespace = "com.nevidimka655.notes"
-    compileSdk = project.property("compileSdk").toString().toInt()
 
     defaultConfig {
-        minSdk = project.property("minSdk").toString().toInt()
-        consumerProguardFiles("consumer-rules.pro")
-
         buildFeatures.compose = true
     }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-        }
-    }
-}
-
-kotlin {
-    jvmToolchain(project.property("kotlinJvmToolchainVersion").toString().toInt())
 }
 
 dependencies {
-    implementation(projects.domain.notes)
+    api(projects.domain.notes)
     api(projects.ui.composeCore)
 
     // Hilt
