@@ -4,6 +4,7 @@ import com.nevidimka655.notes.data.database.NotesDao
 import com.nevidimka655.notes.data.mappers.DataToDomainMapper
 import com.nevidimka655.notes.data.repository.RepositoryImpl
 import com.nevidimka655.notes.data.repository.RepositoryProviderImpl
+import com.nevidimka655.notes.domain.repository.Repository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +16,7 @@ internal object RepositoryModule {
 
     @Provides
     fun provideRepositoryProvider(
-        repositoryImpl: RepositoryImpl,
+        repositoryImpl: Repository,
         //settingsDataStoreManager: SettingsDataStoreManager
     ): RepositoryProviderImpl = RepositoryProviderImpl(
         repository = repositoryImpl,
@@ -26,7 +27,7 @@ internal object RepositoryModule {
     fun provideRepositoryImpl(
         dao: NotesDao,
         dataToDomainMapper: DataToDomainMapper
-    ): RepositoryImpl = RepositoryImpl(
+    ): Repository = RepositoryImpl(
         dao = dao,
         dataToDomainMapper = dataToDomainMapper
     )

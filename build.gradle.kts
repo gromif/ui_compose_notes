@@ -29,16 +29,13 @@ kotlin {
 }
 
 dependencies {
-    api(project(mapOf("path" to ":ui:compose-core")))
+    implementation(projects.domain.notes)
+    api(projects.ui.composeCore)
 
     // Hilt
     ksp(libs.hilt.android.compiler)
     ksp(libs.hilt.compiler)
     api(libs.hilt.android)
-
-    // Paging
-    api(libs.paging.compose)
-    api(libs.paging.runtime.ktx)
 
     // Room
     api(libs.room.runtime)

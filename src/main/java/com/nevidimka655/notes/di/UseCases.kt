@@ -1,7 +1,7 @@
 package com.nevidimka655.notes.di
 
 import com.nevidimka655.notes.data.paging.PagingProviderImpl
-import com.nevidimka655.notes.data.repository.RepositoryImpl
+import com.nevidimka655.notes.domain.repository.Repository
 import com.nevidimka655.notes.domain.usecase.CreateUseCase
 import com.nevidimka655.notes.domain.usecase.DeleteByIdUseCase
 import com.nevidimka655.notes.domain.usecase.GetPagingUseCase
@@ -25,28 +25,28 @@ internal object UseCases {
 
     @Provides
     fun provideCreateUseCase(
-        repositoryImpl: RepositoryImpl
+        repositoryImpl: Repository
     ): CreateUseCase = CreateUseCase(
         repository = repositoryImpl
     )
 
     @Provides
     fun provideLoadByIdUseCase(
-        repositoryImpl: RepositoryImpl
+        repositoryImpl: Repository
     ): LoadByIdUseCase = LoadByIdUseCase(
         repository = repositoryImpl
     )
 
     @Provides
     fun provideUpdateByIdUseCase(
-        repositoryImpl: RepositoryImpl
+        repositoryImpl: Repository
     ): UpdateByIdUseCase = UpdateByIdUseCase(
         repository = repositoryImpl
     )
 
     @Provides
     fun provideDeleteByIdUseCase(
-        repositoryImpl: RepositoryImpl
+        repositoryImpl: Repository
     ): DeleteByIdUseCase = DeleteByIdUseCase(
         repository = repositoryImpl
     )
