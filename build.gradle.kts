@@ -10,6 +10,8 @@ android {
 
 dependencies {
     api(projects.domain.notes)
+    implementation(projects.data.notes)
+    implementation(projects.di.notes)
 
     // Room
     api(libs.room.runtime)
