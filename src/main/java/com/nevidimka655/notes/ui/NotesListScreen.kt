@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.LazyPagingItems
 import com.nevidimka655.notes.Notes
-import com.nevidimka655.notes.domain.model.Note
+import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.ui.compose_core.theme.spaces
 
 @Composable

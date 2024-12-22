@@ -2,9 +2,9 @@ package com.nevidimka655.notes.data.mappers
 
 import android.text.format.DateFormat
 import com.nevidimka655.notes.data.database.NoteItemEntity
-import com.nevidimka655.notes.domain.model.Mapper
-import com.nevidimka655.notes.domain.model.Note
-import com.nevidimka655.notes.domain.model.NoteState
+import com.nevidimka655.domain.notes.model.Mapper
+import com.nevidimka655.domain.notes.model.Note
+import com.nevidimka655.domain.notes.model.NoteState
 
 private const val TIME_PATTERN = "d MMMM yyyy"
 

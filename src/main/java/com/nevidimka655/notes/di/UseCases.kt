@@ -2,11 +2,11 @@ package com.nevidimka655.notes.di
 
 import com.nevidimka655.notes.data.paging.PagingProviderImpl
 import com.nevidimka655.notes.domain.repository.Repository
-import com.nevidimka655.notes.domain.usecase.CreateUseCase
-import com.nevidimka655.notes.domain.usecase.DeleteByIdUseCase
-import com.nevidimka655.notes.domain.usecase.GetPagingUseCase
-import com.nevidimka655.notes.domain.usecase.LoadByIdUseCase
-import com.nevidimka655.notes.domain.usecase.UpdateByIdUseCase
+import com.nevidimka655.domain.notes.usecase.CreateUseCase
+import com.nevidimka655.domain.notes.usecase.DeleteByIdUseCase
+import com.nevidimka655.domain.notes.usecase.GetPagingUseCase
+import com.nevidimka655.domain.notes.usecase.LoadByIdUseCase
+import com.nevidimka655.domain.notes.usecase.UpdateByIdUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

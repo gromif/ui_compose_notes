@@ -7,8 +7,8 @@ import androidx.paging.map
 import com.nevidimka655.notes.data.database.NoteItemEntity
 import com.nevidimka655.notes.data.database.NotesDao
 import com.nevidimka655.notes.data.mappers.DataToDomainMapper
-import com.nevidimka655.notes.domain.model.Note
-import com.nevidimka655.notes.domain.repository.Repository
+import com.nevidimka655.domain.notes.model.Note
+import com.nevidimka655.domain.notes.repository.Repository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

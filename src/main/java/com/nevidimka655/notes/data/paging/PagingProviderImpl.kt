@@ -2,8 +2,8 @@ package com.nevidimka655.notes.data.paging
 
 import androidx.paging.PagingData
 import com.nevidimka655.notes.data.repository.RepositoryProviderImpl
-import com.nevidimka655.notes.domain.model.Note
-import com.nevidimka655.notes.domain.paging.PagingProvider
+import com.nevidimka655.domain.notes.model.Note
+import com.nevidimka655.domain.notes.paging.PagingProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest

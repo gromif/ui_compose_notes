@@ -3,8 +3,8 @@ package com.nevidimka655.notes.data.repository
 import androidx.paging.PagingData
 import com.nevidimka655.notes.data.database.NotesDao
 import com.nevidimka655.notes.data.mappers.DataToDomainMapper
-import com.nevidimka655.notes.domain.model.Note
-import com.nevidimka655.notes.domain.repository.Repository
+import com.nevidimka655.domain.notes.model.Note
+import com.nevidimka655.domain.notes.repository.Repository
 import kotlinx.coroutines.flow.Flow
 
 internal class RepositoryAeadImpl(

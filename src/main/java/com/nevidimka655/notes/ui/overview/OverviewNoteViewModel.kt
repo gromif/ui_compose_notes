@@ -3,11 +3,11 @@ package com.nevidimka655.notes.ui.overview
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nevidimka655.notes.domain.model.Note
-import com.nevidimka655.notes.domain.usecase.CreateUseCase
-import com.nevidimka655.notes.domain.usecase.DeleteByIdUseCase
-import com.nevidimka655.notes.domain.usecase.LoadByIdUseCase
-import com.nevidimka655.notes.domain.usecase.UpdateByIdUseCase
+import com.nevidimka655.domain.notes.model.Note
+import com.nevidimka655.domain.notes.usecase.CreateUseCase
+import com.nevidimka655.domain.notes.usecase.DeleteByIdUseCase
+import com.nevidimka655.domain.notes.usecase.LoadByIdUseCase
+import com.nevidimka655.domain.notes.usecase.UpdateByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

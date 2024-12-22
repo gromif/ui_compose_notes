@@ -3,7 +3,7 @@ package com.nevidimka655.notes.data.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.nevidimka655.notes.domain.model.NoteState
+import com.nevidimka655.domain.notes.model.NoteState
 
 @Entity(tableName = "notes")
 data class NoteItemEntity(

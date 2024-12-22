@@ -1,7 +1,7 @@
 package com.nevidimka655.notes.data.repository
 
-import com.nevidimka655.notes.domain.repository.Repository
-import com.nevidimka655.notes.domain.repository.RepositoryProvider
+import com.nevidimka655.domain.notes.repository.Repository
+import com.nevidimka655.domain.notes.repository.RepositoryProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 
