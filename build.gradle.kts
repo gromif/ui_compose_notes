@@ -1,8 +1,7 @@
 plugins {
     alias(libs.plugins.astracrypt.android.library)
     alias(libs.plugins.astracrypt.android.library.compose)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.hilt)
+    alias(libs.plugins.astracrypt.android.hilt)
 }
 
 android {
@@ -11,11 +10,6 @@ android {
 
 dependencies {
     api(projects.domain.notes)
-
-    // Hilt
-    ksp(libs.hilt.android.compiler)
-    ksp(libs.hilt.compiler)
-    api(libs.hilt.android)
 
     // Room
     api(libs.room.runtime)
