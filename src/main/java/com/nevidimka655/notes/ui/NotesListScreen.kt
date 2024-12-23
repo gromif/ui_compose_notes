@@ -13,34 +13,47 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.paging.compose.LazyPagingItems
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.paging.LoadState
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.nevidimka655.notes.Notes
-import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.ui.compose_core.theme.spaces
 
 @Composable
 fun Notes.NotesListScreen(
-    noteItems: LazyPagingItems<Note>,
-    onClick: (id: Long) -> Unit
-) = LazyColumn(
-    modifier = Modifier.fillMaxSize(),
-    contentPadding = PaddingValues(MaterialTheme.spaces.spaceMedium),
-    verticalArrangement = Arrangement.spacedBy(MaterialTheme.spaces.spaceMedium)
+    onEmptyList: @Composable () -> Unit = {},
+    onClick: (id: Long) -> Unit = {}
 ) {
-    items(
-        count = noteItems.itemSnapshotList.size,
-        key = { noteItems[it]?.id ?: it }
-    ) { index ->
-        noteItems[index]?.let {
-            Note(
-                title = it.name,
-                summary = it.textPreview,
-                date = it.creationTime
-            ) {
-                onClick(it.id)
+    val vm: NotesListViewModel = hiltViewModel()
+    val items = vm.notesPaging.collectAsLazyPagingItems()
+    val showEmptyPage by remember {
+        derivedStateOf {
+            items.itemCount == 0 && items.loadState.refresh !is LoadState.Loading
+        }
+    }
+    if (showEmptyPage) onEmptyList() else LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(MaterialTheme.spaces.spaceMedium),
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spaces.spaceMedium)
+    ) {
+        items(
+            count = items.itemSnapshotList.size,
+            key = { items[it]?.id ?: it }
+        ) { index ->
+            items[index]?.let {
+                Note(
+                    title = it.name,
+                    summary = it.textPreview,
+                    date = it.creationTime
+                ) {
+                    onClick(it.id)
+                }
             }
         }
     }
