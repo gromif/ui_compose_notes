@@ -13,9 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.nevidimka655.astracrypt.resources.R
 import com.nevidimka655.notes.Notes
 import com.nevidimka655.ui.compose_core.TextFieldsDefaults
 import com.nevidimka655.ui.compose_core.theme.spaces
@@ -30,9 +32,7 @@ fun Notes.OverviewScreen(
     onSaveRequestChannel: Channel<Unit>,
     onDeleteRequestChannel: Channel<Unit>,
     onChangeName: (String) -> Unit,
-    onChangeText: (String) -> Unit,
-    nameFieldLabel: String,
-    textFieldLabel: String
+    onChangeText: (String) -> Unit
 ) {
     val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
     val vm: OverviewNoteViewModel = hiltViewModel()
@@ -58,10 +58,8 @@ fun Notes.OverviewScreen(
     }
 
     Overview(
-        nameFieldLabel = nameFieldLabel,
         name = name,
         onChangeName = { if (it.length <= 64) vm.setName(name = it) },
-        textFieldLabel = textFieldLabel,
         text = text,
         onChangeText = { if (it.length <= 1000) vm.setText(text = it) }
     )
@@ -70,10 +68,8 @@ fun Notes.OverviewScreen(
 @Preview(showBackground = true)
 @Composable
 private fun Overview(
-    nameFieldLabel: String = "Name",
     name: String = "Note name",
     onChangeName: (String) -> Unit = {},
-    textFieldLabel: String = "Text",
     text: String = "Note text",
     onChangeText: (String) -> Unit = {}
 ) = Column(
@@ -85,12 +81,12 @@ private fun Overview(
 ) {
     OutlinedTextField(
         modifier = Modifier.fillMaxSize(),
-        label = TextFieldsDefaults.labelText(text = nameFieldLabel),
+        label = TextFieldsDefaults.labelText(text = stringResource(id = R.string.note_title)),
         value = name, onValueChange = onChangeName
     )
     OutlinedTextField(
         modifier = Modifier.fillMaxSize(),
-        label = TextFieldsDefaults.labelText(text = textFieldLabel),
+        label = TextFieldsDefaults.labelText(text = stringResource(id = R.string.text)),
         value = text, onValueChange = onChangeText
     )
 }

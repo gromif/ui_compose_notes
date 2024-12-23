@@ -15,4 +15,5 @@ dependencies {
     implementation(projects.di.notes)
 
     implementation(projects.di.core)
+    implementation(projects.core.resources)
 }
