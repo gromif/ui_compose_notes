@@ -3,6 +3,7 @@ package com.nevidimka655.notes.ui.overview
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nevidimka655.astracrypt.core.di.IoDispatcher
 import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.usecase.CreateUseCase
 import com.nevidimka655.domain.notes.usecase.DeleteByIdUseCase
@@ -20,15 +21,14 @@ private const val STATE_TEXT = "value"
 
 @HiltViewModel
 class OverviewNoteViewModel @Inject constructor(
-    //@IoDispatcher // TODO(Core)
-    //private val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO,
+    @IoDispatcher
+    private val defaultDispatcher: CoroutineDispatcher,
     private val state: SavedStateHandle,
     private val createUseCase: CreateUseCase,
     private val loadByIdUseCase: LoadByIdUseCase,
     private val updateByIdUseCase: UpdateByIdUseCase,
     private val deleteByIdUseCase: DeleteByIdUseCase
 ) : ViewModel() {
-    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO
     private val idState = state.getStateFlow(STATE_ID, -1L)
     val nameState = state.getStateFlow(STATE_NAME, "")
     val textState = state.getStateFlow(STATE_TEXT, "")
