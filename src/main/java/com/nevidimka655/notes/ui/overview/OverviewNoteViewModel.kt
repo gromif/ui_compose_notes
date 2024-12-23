@@ -19,7 +19,7 @@ private const val STATE_NAME = "name"
 private const val STATE_TEXT = "value"
 
 @HiltViewModel
-class OverviewNoteViewModel @Inject constructor(
+internal class OverviewNoteViewModel @Inject constructor(
     @IoDispatcher
     private val defaultDispatcher: CoroutineDispatcher,
     private val state: SavedStateHandle,
