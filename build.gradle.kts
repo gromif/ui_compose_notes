@@ -13,6 +13,8 @@ dependencies {
     implementation(projects.data.notes)
     implementation(projects.di.notes)
 
+    implementation(projects.di.core)
+
     // Room
     api(libs.room.runtime)
     api(libs.room.ktx)
