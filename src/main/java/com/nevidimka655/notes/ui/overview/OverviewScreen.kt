@@ -22,7 +22,6 @@ import com.nevidimka655.ui.compose_core.theme.spaces
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlin.compareTo
 
 @Composable
 fun Notes.OverviewScreen(
