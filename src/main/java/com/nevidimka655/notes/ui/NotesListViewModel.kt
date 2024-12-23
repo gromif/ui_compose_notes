@@ -8,7 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class NotesListViewModel @Inject constructor(
+internal class NotesListViewModel @Inject constructor(
     getPagingUseCase: GetPagingUseCase
 ) : ViewModel() {
     val notesPaging = getPagingUseCase().cachedIn(viewModelScope)
