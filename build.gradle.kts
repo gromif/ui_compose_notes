@@ -11,7 +11,6 @@ android {
 
 dependencies {
     implementation(projects.domain.notes)
-    implementation(projects.data.notes)
     implementation(projects.di.notes)
 
     implementation(projects.di.core)
