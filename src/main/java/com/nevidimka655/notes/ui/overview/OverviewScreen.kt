@@ -19,7 +19,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.nevidimka655.astracrypt.resources.R
 import com.nevidimka655.notes.Notes
-import com.nevidimka655.ui.compose_core.TextFieldsDefaults
+import com.nevidimka655.ui.compose_core.TextFields
 import com.nevidimka655.ui.compose_core.theme.spaces
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.collectLatest
@@ -81,12 +81,12 @@ private fun Overview(
 ) {
     OutlinedTextField(
         modifier = Modifier.fillMaxSize(),
-        label = TextFieldsDefaults.labelText(text = stringResource(id = R.string.note_title)),
+        label = TextFields.labelText(text = stringResource(id = R.string.note_title)),
         value = name, onValueChange = onChangeName
     )
     OutlinedTextField(
         modifier = Modifier.fillMaxSize(),
-        label = TextFieldsDefaults.labelText(text = stringResource(id = R.string.text)),
+        label = TextFields.labelText(text = stringResource(id = R.string.text)),
         value = text, onValueChange = onChangeText
     )
 }
