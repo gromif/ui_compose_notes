@@ -81,12 +81,12 @@ private fun Overview(
 ) {
     OutlinedTextField(
         modifier = Modifier.fillMaxSize(),
-        label = TextFields.labelText(text = stringResource(id = R.string.note_title)),
+        label = TextFields.label(text = stringResource(id = R.string.note_title)),
         value = name, onValueChange = onChangeName
     )
     OutlinedTextField(
         modifier = Modifier.fillMaxSize(),
-        label = TextFields.labelText(text = stringResource(id = R.string.text)),
+        label = TextFields.label(text = stringResource(id = R.string.text)),
         value = text, onValueChange = onChangeText
     )
 }
