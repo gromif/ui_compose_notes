@@ -1,4 +1,4 @@
-package com.nevidimka655.notes.ui.overview
+package com.nevidimka655.notes.overview
 
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.layout.Arrangement

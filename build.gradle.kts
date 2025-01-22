@@ -12,8 +12,8 @@ android {
 }
 
 dependencies {
-    implementation(projects.domain.notes)
-    implementation(projects.di.notes)
+    implementation(projects.features.notes.domain)
+    implementation(projects.features.notes.di)
 
     implementation(projects.di.utils)
     implementation(projects.core.resources)

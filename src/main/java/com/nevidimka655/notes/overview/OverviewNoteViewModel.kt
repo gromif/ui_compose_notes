@@ -1,4 +1,4 @@
-package com.nevidimka655.notes.ui.overview
+package com.nevidimka655.notes.overview
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

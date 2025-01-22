@@ -1,4 +1,4 @@
-package com.nevidimka655.notes.ui
+package com.nevidimka655.notes
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
