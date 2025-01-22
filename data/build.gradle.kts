@@ -1,5 +1,3 @@
-import jdk.tools.jlink.resources.plugins
-
 plugins {
     alias(libs.plugins.astracrypt.android.library)
     alias(libs.plugins.astracrypt.android.room)
