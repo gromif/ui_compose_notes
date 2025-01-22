@@ -3,13 +3,13 @@ package com.nevidimka655.notes.overview
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nevidimka655.astracrypt.core.di.IoDispatcher
 import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.usecase.CreateUseCase
 import com.nevidimka655.domain.notes.usecase.DeleteByIdUseCase
 import com.nevidimka655.domain.notes.usecase.LoadByIdUseCase
 import com.nevidimka655.domain.notes.usecase.UpdateByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.gromif.astracrypt.utils.dispatchers.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
