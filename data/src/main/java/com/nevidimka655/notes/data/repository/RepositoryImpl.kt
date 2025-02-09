@@ -6,10 +6,9 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.nevidimka655.astracrypt.notes.db.NoteItemEntity
 import com.nevidimka655.astracrypt.notes.db.NotesDao
-import com.nevidimka655.astracrypt.utils.Mapper
-import com.nevidimka655.notes.data.mappers.DataToDomainMapper
 import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.repository.Repository
+import io.gromif.astracrypt.utils.Mapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
