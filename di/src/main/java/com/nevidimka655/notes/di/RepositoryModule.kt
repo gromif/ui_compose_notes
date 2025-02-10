@@ -17,12 +17,14 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 import io.gromif.astracrypt.utils.Mapper
 
 @Module
 @InstallIn(ViewModelComponent::class)
 internal object RepositoryModule {
 
+    @ViewModelScoped
     @Provides
     fun provideRepositoryProvider(
         repositoryImpl: Repository,
@@ -32,6 +34,7 @@ internal object RepositoryModule {
         //aeadInfoFlow = settingsDataStoreManager.aeadInfoFlow
     )
 
+    @ViewModelScoped
     @Provides
     fun provideRepositoryImpl(
         dao: NotesDao,
@@ -41,11 +44,13 @@ internal object RepositoryModule {
         dataToDomainMapper = dataToDomainMapper
     )
 
+    @ViewModelScoped
     @Provides
     fun provideSettingsRepository(
         @NotesDataStore dataStore: DataStore<Preferences>
     ): SettingsRepository = SettingsRepositoryImpl(dataStore = dataStore)
 
+    @ViewModelScoped
     @Provides
     fun providePagingProvider(
         repositoryProviderImpl: RepositoryProviderImpl
@@ -53,6 +58,7 @@ internal object RepositoryModule {
         repositoryProviderImpl = repositoryProviderImpl
     )
 
+    @ViewModelScoped
     @Provides
     fun provideDataToDomainMapper(): Mapper<NoteItemEntity, Note> = DataToDomainMapper()
 
