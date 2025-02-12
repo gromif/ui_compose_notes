@@ -5,7 +5,7 @@ import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.paging.PagingProvider
 import kotlinx.coroutines.flow.Flow
 
-class GetPagingUseCase(
+class GetNotesListFlow(
     private val pagingProvider: PagingProvider
 ) {
 
