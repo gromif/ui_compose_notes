@@ -12,7 +12,6 @@ import com.nevidimka655.domain.notes.repository.SettingsRepository
 import com.nevidimka655.notes.data.mappers.DataToDomainMapper
 import com.nevidimka655.notes.data.paging.PagingProviderImpl
 import com.nevidimka655.notes.data.repository.RepositoryImpl
-import com.nevidimka655.notes.data.repository.RepositoryProviderImpl
 import com.nevidimka655.notes.data.repository.SettingsRepositoryImpl
 import dagger.Module
 import dagger.Provides
@@ -24,16 +23,6 @@ import io.gromif.astracrypt.utils.Mapper
 @Module
 @InstallIn(ViewModelComponent::class)
 internal object RepositoryModule {
-
-    @ViewModelScoped
-    @Provides
-    fun provideRepositoryProvider(
-        repositoryImpl: Repository,
-        //settingsDataStoreManager: SettingsDataStoreManager
-    ): RepositoryProviderImpl = RepositoryProviderImpl(
-        repository = repositoryImpl,
-        //aeadInfoFlow = settingsDataStoreManager.aeadInfoFlow
-    )
 
     @ViewModelScoped
     @Provides
