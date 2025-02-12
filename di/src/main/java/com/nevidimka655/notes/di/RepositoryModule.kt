@@ -26,7 +26,7 @@ internal object RepositoryModule {
 
     @ViewModelScoped
     @Provides
-    fun provideRepositoryImpl(
+    fun provideRepository(
         dao: NotesDao,
         dataToDomainMapper: Mapper<NoteItemEntity, Note>
     ): Repository = RepositoryImpl(
