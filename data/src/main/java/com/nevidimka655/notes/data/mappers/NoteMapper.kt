@@ -8,7 +8,7 @@ import io.gromif.astracrypt.utils.Mapper
 
 private const val TIME_PATTERN = "d MMMM yyyy"
 
-class DataToDomainMapper: Mapper<NoteItemEntity, Note> {
+class NoteMapper: Mapper<NoteItemEntity, Note> {
 
     override fun invoke(item: NoteItemEntity): Note {
         return Note(

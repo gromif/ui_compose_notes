@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.map
 
 class PagingProviderImpl(
     private val dao: NotesDao,
-    private val dataToDomainMapper: Mapper<NoteItemEntity, Note>,
+    private val noteMapper: Mapper<NoteItemEntity, Note>,
 ): PagingProvider<PagingData<Note>> {
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -30,7 +30,7 @@ class PagingProviderImpl(
                 dao.listOrderDescAsc()
             }
         ).flow.map { pagingData ->
-            pagingData.map { dataToDomainMapper(item = it) }
+            pagingData.map { noteMapper(item = it) }
         }
     }
 

@@ -9,7 +9,7 @@ import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.paging.PagingProvider
 import com.nevidimka655.domain.notes.repository.Repository
 import com.nevidimka655.domain.notes.repository.SettingsRepository
-import com.nevidimka655.notes.data.mappers.DataToDomainMapper
+import com.nevidimka655.notes.data.mappers.NoteMapper
 import com.nevidimka655.notes.data.paging.PagingProviderImpl
 import com.nevidimka655.notes.data.repository.RepositoryImpl
 import com.nevidimka655.notes.data.repository.SettingsRepositoryImpl
@@ -31,7 +31,7 @@ internal object RepositoryModule {
         dataToDomainMapper: Mapper<NoteItemEntity, Note>
     ): Repository = RepositoryImpl(
         dao = dao,
-        dataToDomainMapper = dataToDomainMapper
+        noteMapper = dataToDomainMapper
     )
 
     @ViewModelScoped
@@ -47,11 +47,11 @@ internal object RepositoryModule {
         dataToDomainMapper: Mapper<NoteItemEntity, Note>
     ): PagingProvider<PagingData<Note>> = PagingProviderImpl(
         dao = dao,
-        dataToDomainMapper = dataToDomainMapper
+        noteMapper = dataToDomainMapper
     )
 
     @ViewModelScoped
     @Provides
-    fun provideDataToDomainMapper(): Mapper<NoteItemEntity, Note> = DataToDomainMapper()
+    fun provideNoteMapper(): Mapper<NoteItemEntity, Note> = NoteMapper()
 
 }

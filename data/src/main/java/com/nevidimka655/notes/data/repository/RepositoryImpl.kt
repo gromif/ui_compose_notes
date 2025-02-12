@@ -8,7 +8,7 @@ import io.gromif.astracrypt.utils.Mapper
 
 class RepositoryImpl(
     private val dao: NotesDao,
-    private val dataToDomainMapper: Mapper<NoteItemEntity, Note>
+    private val noteMapper: Mapper<NoteItemEntity, Note>
 ) : Repository {
     override suspend fun deleteById(id: Long) {
         dao.deleteById(id = id)
@@ -39,7 +39,7 @@ class RepositoryImpl(
 
     override suspend fun getById(id: Long): Note {
         val noteItemEntity = dao.getById(id = id)
-        return dataToDomainMapper(item = noteItemEntity)
+        return noteMapper(item = noteItemEntity)
     }
 
     override suspend fun getByPage(
