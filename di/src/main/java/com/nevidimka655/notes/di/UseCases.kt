@@ -1,5 +1,7 @@
 package com.nevidimka655.notes.di
 
+import androidx.paging.PagingData
+import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.paging.PagingProvider
 import com.nevidimka655.domain.notes.repository.Repository
 import com.nevidimka655.domain.notes.usecase.CreateUseCase
@@ -18,8 +20,8 @@ internal object UseCases {
 
     @Provides
     fun provideGetPagingUseCase(
-        pagingProvider: PagingProvider
-    ): GetNotesListFlow = GetNotesListFlow(
+        pagingProvider: PagingProvider<PagingData<Note>>,
+    ): GetNotesListFlow<PagingData<Note>> = GetNotesListFlow(
         pagingProvider = pagingProvider
     )
 

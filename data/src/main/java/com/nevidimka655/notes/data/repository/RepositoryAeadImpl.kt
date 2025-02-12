@@ -1,11 +1,9 @@
 package com.nevidimka655.notes.data.repository
 
-import androidx.paging.PagingData
 import com.nevidimka655.astracrypt.notes.db.NotesDao
-import com.nevidimka655.notes.data.mappers.DataToDomainMapper
 import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.repository.Repository
-import kotlinx.coroutines.flow.Flow
+import com.nevidimka655.notes.data.mappers.DataToDomainMapper
 
 class RepositoryAeadImpl(
     private val dao: NotesDao,
@@ -31,10 +29,6 @@ class RepositoryAeadImpl(
         pageSize: Int,
         pageIndex: Int
     ): List<Note> {
-        TODO("Not yet implemented")
-    }
-
-    override fun listOrderDescAsc(): Flow<PagingData<Note>> {
         TODO("Not yet implemented")
     }
 }

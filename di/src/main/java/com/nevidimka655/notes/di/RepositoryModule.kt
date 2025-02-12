@@ -2,6 +2,7 @@ package com.nevidimka655.notes.di
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.paging.PagingData
 import com.nevidimka655.astracrypt.notes.db.NoteItemEntity
 import com.nevidimka655.astracrypt.notes.db.NotesDao
 import com.nevidimka655.domain.notes.model.Note
@@ -53,9 +54,11 @@ internal object RepositoryModule {
     @ViewModelScoped
     @Provides
     fun providePagingProvider(
-        repositoryProviderImpl: RepositoryProviderImpl
-    ): PagingProvider = PagingProviderImpl(
-        repositoryProviderImpl = repositoryProviderImpl
+        dao: NotesDao,
+        dataToDomainMapper: Mapper<NoteItemEntity, Note>
+    ): PagingProvider<PagingData<Note>> = PagingProviderImpl(
+        dao = dao,
+        dataToDomainMapper = dataToDomainMapper
     )
 
     @ViewModelScoped
