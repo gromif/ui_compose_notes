@@ -9,7 +9,6 @@ import com.nevidimka655.astracrypt.notes.db.NotesDao
 import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.paging.PagingProvider
 import io.gromif.astracrypt.utils.Mapper
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -18,7 +17,6 @@ class PagingProviderImpl(
     private val noteMapper: Mapper<NoteItemEntity, Note>,
 ): PagingProvider<PagingData<Note>> {
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     override operator fun invoke(): Flow<PagingData<Note>> {
         return Pager(
             PagingConfig(
