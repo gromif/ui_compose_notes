@@ -4,6 +4,7 @@ import androidx.paging.PagingData
 import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.paging.PagingProvider
 import com.nevidimka655.domain.notes.repository.Repository
+import com.nevidimka655.domain.notes.repository.SettingsRepository
 import com.nevidimka655.domain.notes.usecase.CreateUseCase
 import com.nevidimka655.domain.notes.usecase.DeleteByIdUseCase
 import com.nevidimka655.domain.notes.usecase.GetNotesListFlow
@@ -22,28 +23,34 @@ internal object UseCases {
     fun provideGetPagingUseCase(
         pagingProvider: PagingProvider<PagingData<Note>>,
     ): GetNotesListFlow<PagingData<Note>> = GetNotesListFlow(
-        pagingProvider = pagingProvider
+        pagingProvider = pagingProvider,
     )
 
     @Provides
     fun provideCreateUseCase(
-        repositoryImpl: Repository
+        repositoryImpl: Repository,
+        settingsRepository: SettingsRepository,
     ): CreateUseCase = CreateUseCase(
-        repository = repositoryImpl
+        repository = repositoryImpl,
+        settingsRepository = settingsRepository,
     )
 
     @Provides
     fun provideLoadByIdUseCase(
-        repositoryImpl: Repository
+        repositoryImpl: Repository,
+        settingsRepository: SettingsRepository,
     ): LoadByIdUseCase = LoadByIdUseCase(
-        repository = repositoryImpl
+        repository = repositoryImpl,
+        settingsRepository = settingsRepository,
     )
 
     @Provides
     fun provideUpdateByIdUseCase(
-        repositoryImpl: Repository
+        repositoryImpl: Repository,
+        settingsRepository: SettingsRepository,
     ): UpdateByIdUseCase = UpdateByIdUseCase(
-        repository = repositoryImpl
+        repository = repositoryImpl,
+        settingsRepository = settingsRepository,
     )
 
     @Provides

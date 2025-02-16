@@ -4,10 +4,12 @@ import com.nevidimka655.astracrypt.notes.db.NoteItemEntity
 import com.nevidimka655.astracrypt.notes.db.NotesDao
 import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.repository.Repository
+import com.nevidimka655.notes.data.util.AeadHandler
 import io.gromif.astracrypt.utils.Mapper
 
 class RepositoryImpl(
     private val dao: NotesDao,
+    private val aeadHandler: AeadHandler,
     private val noteMapper: Mapper<NoteItemEntity, Note>
 ) : Repository {
     override suspend fun deleteById(id: Long) {
@@ -27,18 +29,29 @@ class RepositoryImpl(
         )
     }
 
-    override suspend fun update(id: Long, name: String, text: String) {
-        val noteItemEntity = createNoteItemEntity(id = id, name, text)
+    override suspend fun update(
+        aead: Int,
+        id: Long,
+        name: String,
+        text: String,
+    ) {
+        val noteItemEntity = createNoteItemEntity(id = id, name, text).let {
+            if (aead > -1) aeadHandler.encryptNoteEntity(aead, it) else it
+        }
         dao.update(noteItemEntity = noteItemEntity)
     }
 
-    override suspend fun insert(name: String, text: String) {
-        val noteItemEntity = createNoteItemEntity(name = name, text = text)
+    override suspend fun insert(aead: Int, name: String, text: String) {
+        val noteItemEntity = createNoteItemEntity(name = name, text = text).let {
+            if (aead > -1) aeadHandler.encryptNoteEntity(aead, it) else it
+        }
         dao.insert(noteItemEntity = noteItemEntity)
     }
 
-    override suspend fun getById(id: Long): Note {
-        val noteItemEntity = dao.getById(id = id)
+    override suspend fun getById(aead: Int, id: Long): Note {
+        val noteItemEntity = dao.getById(id = id).let {
+            if (aead > -1) aeadHandler.decryptNoteEntity(aead, it) else it
+        }
         return noteMapper(item = noteItemEntity)
     }
 

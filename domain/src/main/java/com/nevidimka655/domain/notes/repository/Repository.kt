@@ -6,11 +6,20 @@ interface Repository {
 
     suspend fun deleteById(id: Long)
 
-    suspend fun update(id: Long, name: String, text: String)
+    suspend fun update(
+        aead: Int,
+        id: Long,
+        name: String,
+        text: String,
+    )
 
-    suspend fun insert(name: String, text: String)
+    suspend fun insert(
+        aead: Int,
+        name: String,
+        text: String,
+    )
 
-    suspend fun getById(id: Long): Note
+    suspend fun getById(aead: Int, id: Long): Note
 
     suspend fun getByPage(pageSize: Int, pageIndex: Int): List<Note>
 
