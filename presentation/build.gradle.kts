@@ -16,5 +16,6 @@ dependencies {
     implementation(projects.features.notes.domain)
     implementation(projects.features.notes.di)
 
+    implementation(projects.core.utils)
     implementation(projects.core.resources)
 }
