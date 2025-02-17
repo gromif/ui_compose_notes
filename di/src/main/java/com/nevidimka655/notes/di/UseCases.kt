@@ -7,8 +7,10 @@ import com.nevidimka655.domain.notes.repository.Repository
 import com.nevidimka655.domain.notes.repository.SettingsRepository
 import com.nevidimka655.domain.notes.usecase.CreateUseCase
 import com.nevidimka655.domain.notes.usecase.DeleteByIdUseCase
+import com.nevidimka655.domain.notes.usecase.GetAeadPreferenceFlowUseCase
 import com.nevidimka655.domain.notes.usecase.GetNotesListFlow
 import com.nevidimka655.domain.notes.usecase.LoadByIdUseCase
+import com.nevidimka655.domain.notes.usecase.SetAeadPreferenceUseCase
 import com.nevidimka655.domain.notes.usecase.UpdateByIdUseCase
 import dagger.Module
 import dagger.Provides
@@ -32,6 +34,20 @@ internal object UseCases {
         settingsRepository: SettingsRepository,
     ): CreateUseCase = CreateUseCase(
         repository = repositoryImpl,
+        settingsRepository = settingsRepository,
+    )
+
+    @Provides
+    fun provideSetAeadPreferenceUseCase(
+        settingsRepository: SettingsRepository,
+    ): SetAeadPreferenceUseCase = SetAeadPreferenceUseCase(
+        settingsRepository = settingsRepository,
+    )
+
+    @Provides
+    fun provideGetAeadPreferenceFlowUseCase(
+        settingsRepository: SettingsRepository,
+    ): GetAeadPreferenceFlowUseCase = GetAeadPreferenceFlowUseCase(
         settingsRepository = settingsRepository,
     )
 

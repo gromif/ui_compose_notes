@@ -1,13 +1,14 @@
 package com.nevidimka655.domain.notes.repository
 
+import com.nevidimka655.domain.notes.model.AeadMode
 import kotlinx.coroutines.flow.Flow
 
 interface SettingsRepository {
 
-    fun getAeadTemplateIndexFlow(): Flow<Int>
+    fun getAeadModeFlow(): Flow<AeadMode>
 
-    suspend fun getAeadTemplateIndex(): Int
+    suspend fun getAeadMode(): AeadMode
 
-    suspend fun setAeadTemplateIndex(aead: Int)
+    suspend fun setAeadMode(aeadMode: AeadMode)
 
 }

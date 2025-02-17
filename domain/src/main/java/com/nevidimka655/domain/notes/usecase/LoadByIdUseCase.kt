@@ -10,7 +10,7 @@ class LoadByIdUseCase(
 ) {
 
     suspend operator fun invoke(id: Long): Note {
-        val aead = settingsRepository.getAeadTemplateIndex()
+        val aead = settingsRepository.getAeadMode()
         return repository.getById(aead, id)
     }
 

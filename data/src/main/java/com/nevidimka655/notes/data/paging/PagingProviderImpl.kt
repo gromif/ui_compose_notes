@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.nevidimka655.astracrypt.notes.db.NoteItemEntity
 import com.nevidimka655.astracrypt.notes.db.NotesDao
+import com.nevidimka655.domain.notes.model.AeadMode
 import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.paging.PagingProvider
 import com.nevidimka655.domain.notes.repository.SettingsRepository
@@ -32,8 +33,8 @@ class PagingProviderImpl(
                 dao.listOrderDescAsc()
             }
         ).flow.map { pagingData ->
-            val aead = settingsRepository.getAeadTemplateIndex()
-            if (aead > -1) pagingData.map {
+            val aead = settingsRepository.getAeadMode()
+            if (aead is AeadMode.Template) pagingData.map {
                 val currentItem = aeadHandler.decryptNoteEntity(aead, it)
                 noteMapper(item = currentItem)
             } else pagingData.map { noteMapper(item = it) }

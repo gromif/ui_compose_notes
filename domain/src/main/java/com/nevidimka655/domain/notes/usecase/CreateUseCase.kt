@@ -9,7 +9,7 @@ class CreateUseCase(
 ) {
 
     suspend operator fun invoke(name: String, text: String) {
-        val aead = settingsRepository.getAeadTemplateIndex()
+        val aead = settingsRepository.getAeadMode()
         repository.insert(aead, name, text)
     }
 

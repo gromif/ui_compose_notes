@@ -9,7 +9,7 @@ class UpdateByIdUseCase(
 ) {
 
     suspend operator fun invoke(id: Long, name: String, text: String) {
-        val aead = settingsRepository.getAeadTemplateIndex()
+        val aead = settingsRepository.getAeadMode()
         repository.update(
             aead = aead,
             id = id,
