@@ -17,5 +17,6 @@ dependencies {
     implementation(projects.features.notes.di)
 
     implementation(projects.core.utils)
+    implementation(projects.core.crypto.tink)
     implementation(projects.core.resources)
 }
