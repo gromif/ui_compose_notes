@@ -1,6 +1,7 @@
 package com.nevidimka655.notes.data.util
 
 import com.nevidimka655.astracrypt.notes.db.NoteItemEntity
+import com.nevidimka655.astracrypt.notes.db.tuples.TransformNotesTuple
 import com.nevidimka655.domain.notes.model.AeadMode
 
 class AeadHandler(
@@ -8,6 +9,15 @@ class AeadHandler(
 ) {
 
     suspend fun encryptNoteEntity(aeadIndex: AeadMode.Template, data: NoteItemEntity) = data.copy(
+        name = encrypt(aeadIndex, data.name),
+        text = encrypt(aeadIndex, data.text),
+        textPreview = encrypt(aeadIndex, data.textPreview),
+    )
+
+    suspend fun encryptTransformTuple(
+        aeadIndex: AeadMode.Template,
+        data: TransformNotesTuple
+    ) = data.copy(
         name = encrypt(aeadIndex, data.name),
         text = encrypt(aeadIndex, data.text),
         textPreview = encrypt(aeadIndex, data.textPreview),

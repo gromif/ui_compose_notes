@@ -22,6 +22,8 @@ interface Repository {
 
     suspend fun getById(aead: AeadMode, id: Long): Note
 
+    suspend fun changeAead(targetAeadMode: AeadMode)
+
     suspend fun getByPage(pageSize: Int, pageIndex: Int): List<Note>
 
 }

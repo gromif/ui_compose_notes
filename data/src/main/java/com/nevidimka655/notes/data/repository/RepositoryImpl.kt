@@ -7,6 +7,8 @@ import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.repository.Repository
 import com.nevidimka655.notes.data.util.AeadHandler
 import io.gromif.astracrypt.utils.Mapper
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 class RepositoryImpl(
     private val dao: NotesDao,
@@ -54,6 +56,24 @@ class RepositoryImpl(
             if (aead is AeadMode.Template) aeadHandler.decryptNoteEntity(aead, it) else it
         }
         return noteMapper(item = noteItemEntity)
+    }
+
+    override suspend fun changeAead(targetAeadMode: AeadMode) = coroutineScope {
+        val pageSize = 10
+        var offset = 0
+        var page = dao.getTransformItems(pageSize, offset).also { offset += pageSize }
+        while (page.isNotEmpty()) {
+            page.forEach {
+                if (targetAeadMode is AeadMode.Template) launch {
+                    val transformedTuple = aeadHandler.encryptTransformTuple(
+                        aeadIndex = targetAeadMode,
+                        data = it
+                    )
+                    dao.updateTransform(transformedTuple)
+                } else launch { dao.updateTransform(it) }
+            }
+            page = dao.getTransformItems(pageSize, offset).also { offset += pageSize }
+        }
     }
 
     override suspend fun getByPage(
