@@ -24,6 +24,4 @@ interface Repository {
 
     suspend fun changeAead(targetAeadMode: AeadMode)
 
-    suspend fun getByPage(pageSize: Int, pageIndex: Int): List<Note>
-
 }

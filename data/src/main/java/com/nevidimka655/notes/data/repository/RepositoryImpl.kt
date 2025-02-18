@@ -76,10 +76,4 @@ class RepositoryImpl(
         }
     }
 
-    override suspend fun getByPage(
-        pageSize: Int, pageIndex: Int
-    ): List<Note> {
-        //return dao.getTransformItems(pageSize, pageIndex)
-        TODO("DatabaseTransform")
-    }
 }
