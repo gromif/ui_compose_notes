@@ -24,9 +24,9 @@ class AeadHandler(
     )
 
     suspend fun decryptNoteEntity(aeadIndex: AeadMode.Template, data: NoteItemEntity) = data.copy(
-        name = encrypt(aeadIndex, data.name),
-        text = encrypt(aeadIndex, data.text),
-        textPreview = encrypt(aeadIndex, data.textPreview),
+        name = decrypt(aeadIndex, data.name),
+        text = decrypt(aeadIndex, data.text),
+        textPreview = decrypt(aeadIndex, data.textPreview),
     )
 
     private suspend fun decrypt(aeadIndex: AeadMode.Template, data: String?): String? {
