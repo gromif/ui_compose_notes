@@ -2,9 +2,8 @@ package com.nevidimka655.notes.settings.shared
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import com.nevidimka655.astracrypt.resources.R
@@ -20,12 +19,17 @@ internal fun DatabaseOption(
     aeadTemplatesList: List<AeadTemplate> = listOf(),
     onNotesAeadChange: (AeadMode) -> Unit = {}
 ) {
-    var aeadIndexToConfirm by rememberSaveable { mutableStateOf<AeadMode>(AeadMode.None) }
+    var aeadIndexToConfirm by remember { mutableIntStateOf(-1) }
     var dialogConfirmAead by DialogsCore.simple(
         title = stringResource(id = R.string.dialog_applyNewSettings),
         text = stringResource(id = R.string.dialog_applyNewSettings_message)
     ) {
-        onNotesAeadChange(aeadIndexToConfirm)
+        val aeadMode = if (aeadIndexToConfirm == 0) AeadMode.None else {
+            aeadTemplatesList[aeadIndexToConfirm].let {
+                AeadMode.Template(id = it.id, name = it.name)
+            }
+        }
+        onNotesAeadChange(aeadMode)
     }
 
     val withoutEncryption = stringResource(R.string.withoutEncryption)
@@ -34,9 +38,7 @@ internal fun DatabaseOption(
     }
     var dialogDatabaseState by DialogsCore.Selectable.radio(
         onSelected = {
-            aeadIndexToConfirm = if (it == 0) AeadMode.None else aeadTemplatesList[it].let {
-                AeadMode.Template(id = it.id, name = it.name)
-            }
+            aeadIndexToConfirm = it
             dialogConfirmAead = true
         },
         title = stringResource(id = R.string.settings_database),
