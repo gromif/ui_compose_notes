@@ -7,8 +7,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.gromif.crypto.tink.core.encoders.Base64Encoder
+import io.gromif.crypto.tink.data.AeadManager
 import io.gromif.crypto.tink.data.AssociatedDataManager
-import io.gromif.crypto.tink.data.KeysetManager
 import javax.inject.Singleton
 
 @Module
@@ -17,11 +17,11 @@ internal object UtilModule {
 
     @Provides
     fun provideAeadUtil(
-        keysetManager: KeysetManager,
+        aeadManager: AeadManager,
         associatedDataManager: AssociatedDataManager,
         base64Encoder: Base64Encoder,
     ): AeadUtil = AeadUtil(
-        keysetManager = keysetManager,
+        aeadManager = aeadManager,
         associatedDataManager = associatedDataManager,
         base64Encoder = base64Encoder,
     )

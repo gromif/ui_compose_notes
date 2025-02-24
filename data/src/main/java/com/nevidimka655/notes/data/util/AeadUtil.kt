@@ -2,15 +2,14 @@ package com.nevidimka655.notes.data.util
 
 import com.google.crypto.tink.Aead
 import io.gromif.crypto.tink.core.encoders.Base64Encoder
+import io.gromif.crypto.tink.data.AeadManager
 import io.gromif.crypto.tink.data.AssociatedDataManager
-import io.gromif.crypto.tink.data.KeysetManager
-import io.gromif.crypto.tink.extensions.aead
 import io.gromif.crypto.tink.model.KeysetTemplates
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
 class AeadUtil(
-    private val keysetManager: KeysetManager,
+    private val aeadManager: AeadManager,
     private val associatedDataManager: AssociatedDataManager,
     private val base64Encoder: Base64Encoder
 ) {
@@ -54,10 +53,12 @@ class AeadUtil(
     }
 
     private suspend fun getAead(aeadIndex: Int): Aead {
-        return keysetManager.getKeyset(
-            tag = "notes_db",
+        return aeadManager.aead(
+            tag = TAG_KEYSET,
             keyParams = KeysetTemplates.AEAD.entries[aeadIndex].params
-        ).aead()
+        )
     }
 
 }
+
+private const val TAG_KEYSET = "notes_db"
