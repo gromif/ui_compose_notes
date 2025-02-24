@@ -23,6 +23,15 @@ class AeadHandler(
         textPreview = encrypt(aeadIndex, data.textPreview),
     )
 
+    suspend fun decryptTransformTuple(
+        aeadTemplate: AeadMode.Template,
+        data: TransformNotesTuple
+    ) = data.copy(
+        name = decrypt(aeadTemplate, data.name),
+        text = decrypt(aeadTemplate, data.text),
+        textPreview = decrypt(aeadTemplate, data.textPreview),
+    )
+
     suspend fun decryptNoteEntity(aeadIndex: AeadMode.Template, data: NoteItemEntity) = data.copy(
         name = decrypt(aeadIndex, data.name),
         text = decrypt(aeadIndex, data.text),

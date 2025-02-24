@@ -22,6 +22,9 @@ interface Repository {
 
     suspend fun getById(aead: AeadMode, id: Long): Note
 
-    suspend fun changeAead(targetAeadMode: AeadMode)
+    suspend fun changeAead(
+        sourceAeadMode: AeadMode,
+        targetAeadMode: AeadMode,
+    )
 
 }

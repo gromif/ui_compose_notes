@@ -2,6 +2,7 @@ package com.nevidimka655.notes.data.repository
 
 import com.nevidimka655.astracrypt.notes.db.NoteItemEntity
 import com.nevidimka655.astracrypt.notes.db.NotesDao
+import com.nevidimka655.astracrypt.notes.db.tuples.TransformNotesTuple
 import com.nevidimka655.domain.notes.model.AeadMode
 import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.repository.Repository
@@ -58,21 +59,31 @@ class RepositoryImpl(
         return noteMapper(item = noteItemEntity)
     }
 
-    override suspend fun changeAead(targetAeadMode: AeadMode) = coroutineScope {
+    override suspend fun changeAead(
+        sourceAeadMode: AeadMode,
+        targetAeadMode: AeadMode,
+    ) = coroutineScope {
         val pageSize = 10
         var offset = 0
-        var page = dao.getTransformItems(pageSize, offset).also { offset += pageSize }
-        while (page.isNotEmpty()) {
-            page.forEach {
-                if (targetAeadMode is AeadMode.Template) launch {
-                    val transformedTuple = aeadHandler.encryptTransformTuple(
-                        aeadIndex = targetAeadMode,
-                        data = it
-                    )
-                    dao.updateTransform(transformedTuple)
-                } else launch { dao.updateTransform(it) }
-            }
-            page = dao.getTransformItems(pageSize, offset).also { offset += pageSize }
+        var page: List<TransformNotesTuple> = listOf()
+
+        suspend fun nextItemsPage(): Boolean {
+            page = dao.getTransformItems(pageSize, offset)
+            offset += page.size
+            return page.isNotEmpty()
+        }
+
+        while (nextItemsPage()) page.forEach {
+            val tuple = if (sourceAeadMode is AeadMode.Template) {
+                aeadHandler.decryptTransformTuple(aeadTemplate = sourceAeadMode, data = it)
+            } else it
+            if (targetAeadMode is AeadMode.Template) launch {
+                val transformedTuple = aeadHandler.encryptTransformTuple(
+                    aeadIndex = targetAeadMode,
+                    data = tuple
+                )
+                dao.updateTransform(transformedTuple)
+            } else launch { dao.updateTransform(tuple) }
         }
     }
 

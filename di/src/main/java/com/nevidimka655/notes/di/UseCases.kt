@@ -8,6 +8,7 @@ import com.nevidimka655.domain.notes.repository.SettingsRepository
 import com.nevidimka655.domain.notes.usecase.CreateUseCase
 import com.nevidimka655.domain.notes.usecase.DeleteByIdUseCase
 import com.nevidimka655.domain.notes.usecase.GetAeadPreferenceFlowUseCase
+import com.nevidimka655.domain.notes.usecase.GetAeadPreferenceUseCase
 import com.nevidimka655.domain.notes.usecase.GetNotesListFlow
 import com.nevidimka655.domain.notes.usecase.LoadByIdUseCase
 import com.nevidimka655.domain.notes.usecase.SetAeadPreferenceUseCase
@@ -15,10 +16,10 @@ import com.nevidimka655.domain.notes.usecase.UpdateByIdUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
 
 @Module
-@InstallIn(ViewModelComponent::class)
+@InstallIn(SingletonComponent::class)
 internal object UseCases {
 
     @Provides
@@ -48,6 +49,13 @@ internal object UseCases {
     fun provideGetAeadPreferenceFlowUseCase(
         settingsRepository: SettingsRepository,
     ): GetAeadPreferenceFlowUseCase = GetAeadPreferenceFlowUseCase(
+        settingsRepository = settingsRepository,
+    )
+
+    @Provides
+    fun provideGetAeadPreferenceUseCase(
+        settingsRepository: SettingsRepository,
+    ): GetAeadPreferenceUseCase = GetAeadPreferenceUseCase(
         settingsRepository = settingsRepository,
     )
 

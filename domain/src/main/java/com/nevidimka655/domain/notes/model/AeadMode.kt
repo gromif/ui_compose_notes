@@ -1,12 +1,14 @@
 package com.nevidimka655.domain.notes.model
 
-sealed class AeadMode {
+sealed class AeadMode(
+    open val id: Int
+) {
 
-    object None: AeadMode()
+    object None: AeadMode(id = -1)
 
     data class Template(
-        val id: Int,
+        override val id: Int,
         val name: String,
-    ): AeadMode()
+    ): AeadMode(id = id)
 
 }

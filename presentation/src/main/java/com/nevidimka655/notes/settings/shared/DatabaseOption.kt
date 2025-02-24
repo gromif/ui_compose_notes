@@ -24,7 +24,7 @@ internal fun DatabaseOption(
         title = stringResource(id = R.string.dialog_applyNewSettings),
         text = stringResource(id = R.string.dialog_applyNewSettings_message)
     ) {
-        val aeadMode = if (aeadIndexToConfirm == 0) AeadMode.None else {
+        val aeadMode = if (aeadIndexToConfirm == -1) AeadMode.None else {
             aeadTemplatesList[aeadIndexToConfirm].let {
                 AeadMode.Template(id = it.id, name = it.name)
             }
@@ -38,14 +38,14 @@ internal fun DatabaseOption(
     }
     var dialogDatabaseState by DialogsCore.Selectable.radio(
         onSelected = {
-            aeadIndexToConfirm = it
+            aeadIndexToConfirm = it - 1
             dialogConfirmAead = true
         },
         title = stringResource(id = R.string.settings_database),
         items = optionsList,
         selectedItemIndex = when (aeadMode) {
             AeadMode.None -> 0
-            is AeadMode.Template -> aeadTemplatesList.indexOfFirst { it.id == aeadMode.id }
+            is AeadMode.Template -> aeadTemplatesList.indexOfFirst { it.id == aeadMode.id } + 1
         },
     )
 

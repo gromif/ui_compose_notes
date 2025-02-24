@@ -40,7 +40,7 @@ class AeadUtil(
         cachedAeadMap[aeadIndex] ?: aeadManager.aead(
             tag = TAG_KEYSET,
             keyParams = KeysetTemplates.AEAD.entries[aeadIndex].params
-        )
+        ).also { cachedAeadMap[aeadIndex] = it }
     }
 
 }

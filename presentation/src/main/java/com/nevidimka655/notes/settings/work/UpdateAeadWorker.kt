@@ -9,9 +9,11 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
+import androidx.work.Data
 import androidx.work.ForegroundInfo
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
+import androidx.work.workDataOf
 import com.nevidimka655.astracrypt.resources.R
 import com.nevidimka655.domain.notes.model.AeadMode
 import com.nevidimka655.domain.notes.usecase.UpdateNotesAeadUseCase
@@ -33,16 +35,25 @@ internal class UpdateAeadWorker @AssistedInject constructor(
 ) : CoroutineWorker(context, params) {
 
     companion object {
-        const val TARGET_AEAD = "a1"
+        private const val TARGET_AEAD = "a1"
+
+        fun createWorkerData(targetAead: AeadMode): Data {
+            val targetAead = targetAead.id
+            val data = workDataOf(
+                TARGET_AEAD to targetAead,
+            )
+            return data
+        }
+
     }
 
     override suspend fun doWork(): Result {
-        val targetAeadTemplate = inputData.getInt(TARGET_AEAD, -1).let {
-            if (it == -1) AeadMode.None else AeadMode.Template(id = it, name = "")
+        val targetAeadMode = inputData.getInt(TARGET_AEAD, -1).let {
+            if (it == -1) AeadMode.None else AeadMode.Template(it, "")
         }
         setForeground(getForegroundInfo())
         withContext(defaultDispatcher.limitedParallelism(4)) {
-            updateNotesAeadUseCase(targetAeadTemplate)
+            updateNotesAeadUseCase(targetAeadMode)
         }
         return Result.success()
     }
@@ -88,6 +99,7 @@ internal class UpdateAeadWorker @AssistedInject constructor(
                 as NotificationManager
         notificationManager.createNotificationChannel(channel)
     }
+
 }
 
 private const val NOTIFICATION_CHANNEL_ID = "file_operations_channel"
