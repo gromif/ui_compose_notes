@@ -31,11 +31,11 @@ internal object UseCases {
 
     @Provides
     fun provideCreateUseCase(
+        getAeadPreferenceUseCase: GetAeadPreferenceUseCase,
         repositoryImpl: Repository,
-        settingsRepository: SettingsRepository,
     ): CreateUseCase = CreateUseCase(
+        getAeadPreferenceUseCase = getAeadPreferenceUseCase,
         repository = repositoryImpl,
-        settingsRepository = settingsRepository,
     )
 
     @Provides
@@ -61,20 +61,20 @@ internal object UseCases {
 
     @Provides
     fun provideLoadByIdUseCase(
+        getAeadPreferenceUseCase: GetAeadPreferenceUseCase,
         repositoryImpl: Repository,
-        settingsRepository: SettingsRepository,
     ): LoadByIdUseCase = LoadByIdUseCase(
+        getAeadPreferenceUseCase = getAeadPreferenceUseCase,
         repository = repositoryImpl,
-        settingsRepository = settingsRepository,
     )
 
     @Provides
     fun provideUpdateByIdUseCase(
+        getAeadPreferenceUseCase: GetAeadPreferenceUseCase,
         repositoryImpl: Repository,
-        settingsRepository: SettingsRepository,
     ): UpdateByIdUseCase = UpdateByIdUseCase(
+        getAeadPreferenceUseCase = getAeadPreferenceUseCase,
         repository = repositoryImpl,
-        settingsRepository = settingsRepository,
     )
 
     @Provides
