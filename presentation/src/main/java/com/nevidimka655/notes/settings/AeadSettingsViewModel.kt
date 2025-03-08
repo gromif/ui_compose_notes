@@ -27,7 +27,7 @@ internal class AeadSettingsViewModel @Inject constructor(
 ) : ViewModel() {
     val aeadTemplatesList = KeysetTemplates.AEAD.getTemplateList()
     val aeadPreference = getAeadPreferenceFlowUseCase()
-        .stateIn(viewModelScope, SharingStarted.Eagerly, null)
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
     fun setAeadPreference(targetAead: AeadMode) = viewModelScope.launch(defaultDispatcher) {
         val data = UpdateAeadWorker.createWorkerData(targetAead = targetAead)
