@@ -1,11 +1,11 @@
 package com.nevidimka655.notes.data.repository
 
-import com.nevidimka655.astracrypt.notes.db.NoteItemEntity
-import com.nevidimka655.astracrypt.notes.db.NotesDao
-import com.nevidimka655.astracrypt.notes.db.tuples.TransformNotesTuple
 import com.nevidimka655.domain.notes.model.AeadMode
 import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.repository.Repository
+import com.nevidimka655.notes.data.db.NoteItemEntity
+import com.nevidimka655.notes.data.db.NotesDao
+import com.nevidimka655.notes.data.db.tuples.TransformNotesTuple
 import com.nevidimka655.notes.data.util.AeadHandler
 import io.gromif.astracrypt.utils.Mapper
 import kotlinx.coroutines.coroutineScope

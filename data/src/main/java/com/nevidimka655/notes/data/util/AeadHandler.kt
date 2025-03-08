@@ -1,8 +1,8 @@
 package com.nevidimka655.notes.data.util
 
-import com.nevidimka655.astracrypt.notes.db.NoteItemEntity
-import com.nevidimka655.astracrypt.notes.db.tuples.TransformNotesTuple
 import com.nevidimka655.domain.notes.model.AeadMode
+import com.nevidimka655.notes.data.db.NoteItemEntity
+import com.nevidimka655.notes.data.db.tuples.TransformNotesTuple
 
 class AeadHandler(
     private val aeadUtil: AeadUtil,

@@ -4,12 +4,12 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.nevidimka655.astracrypt.notes.db.NoteItemEntity
-import com.nevidimka655.astracrypt.notes.db.NotesDao
 import com.nevidimka655.domain.notes.model.AeadMode
 import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.paging.PagingProvider
 import com.nevidimka655.domain.notes.repository.SettingsRepository
+import com.nevidimka655.notes.data.db.NoteItemEntity
+import com.nevidimka655.notes.data.db.NotesDao
 import com.nevidimka655.notes.data.util.AeadHandler
 import io.gromif.astracrypt.utils.Mapper
 import kotlinx.coroutines.flow.Flow

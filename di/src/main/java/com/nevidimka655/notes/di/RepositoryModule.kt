@@ -1,12 +1,12 @@
 package com.nevidimka655.notes.di
 
 import androidx.paging.PagingData
-import com.nevidimka655.astracrypt.notes.db.NoteItemEntity
-import com.nevidimka655.astracrypt.notes.db.NotesDao
 import com.nevidimka655.domain.notes.model.Note
 import com.nevidimka655.domain.notes.paging.PagingProvider
 import com.nevidimka655.domain.notes.repository.Repository
 import com.nevidimka655.domain.notes.repository.SettingsRepository
+import com.nevidimka655.notes.data.db.NoteItemEntity
+import com.nevidimka655.notes.data.db.NotesDao
 import com.nevidimka655.notes.data.mappers.NoteMapper
 import com.nevidimka655.notes.data.paging.PagingProviderImpl
 import com.nevidimka655.notes.data.repository.RepositoryImpl
