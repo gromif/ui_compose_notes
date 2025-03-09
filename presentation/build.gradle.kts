@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.nevidimka655.notes"
+    namespace = "io.gromif.notes.presentation"
 }
 
 dependencies {

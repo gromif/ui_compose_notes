@@ -4,5 +4,5 @@ plugins {
 }
 
 android {
-    namespace = "com.nevidimka655.domain.notes"
+    namespace = "io.gromif.notes.notes"
 }

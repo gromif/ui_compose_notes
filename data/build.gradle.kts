@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.nevidimka655.notes.data"
+    namespace = "io.gromif.notes.data"
 }
 
 dependencies {
