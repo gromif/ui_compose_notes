@@ -6,7 +6,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.nevidimka655.astracrypt.resources.R
+import io.gromif.astracrypt.resources.R
 import io.gromif.crypto.tink.model.AeadTemplate
 import io.gromif.notes.domain.model.AeadMode
 import io.gromif.notes.presentation.settings.shared.DatabaseOption
