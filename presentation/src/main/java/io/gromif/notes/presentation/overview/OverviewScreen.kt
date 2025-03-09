@@ -18,9 +18,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.nevidimka655.astracrypt.resources.R
-import com.nevidimka655.ui.compose_core.TextFields
-import com.nevidimka655.ui.compose_core.theme.spaces
 import io.gromif.notes.presentation.Notes
+import io.gromif.ui.compose.core.TextFields
+import io.gromif.ui.compose.core.theme.spaces
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.receiveAsFlow

@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.nevidimka655.ui.compose_core.theme.spaces
+import io.gromif.ui.compose.core.theme.spaces
 
 @Composable
 fun Notes.NotesListScreen(
