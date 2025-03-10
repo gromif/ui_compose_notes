@@ -17,7 +17,7 @@ class SettingsRepositoryImpl(
     private val aeadKey = intPreferencesKey("aead")
     override fun getAeadModeFlow(): Flow<AeadMode> {
         return dataStore.data.map {
-            val aeadIndex = it[aeadKey] ?: -1
+            val aeadIndex = it[aeadKey] ?: KeysetTemplates.AEAD.XAES_256_GCM_192_BIT_NONCE_NO_PREFIX.ordinal
             when {
                 aeadIndex == -1 -> AeadMode.None
                 else -> AeadMode.Template(
