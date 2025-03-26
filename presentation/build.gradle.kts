@@ -6,6 +6,8 @@ plugins {
     alias(libs.plugins.astracrypt.android.hilt.compose)
     alias(libs.plugins.astracrypt.android.paging)
     alias(libs.plugins.astracrypt.android.work)
+
+    alias(libs.plugins.astracrypt.test.unit)
 }
 
 android {
