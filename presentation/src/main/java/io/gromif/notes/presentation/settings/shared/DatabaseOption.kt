@@ -7,7 +7,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import io.gromif.astracrypt.resources.R
-import io.gromif.crypto.tink.model.AeadTemplate
+import io.gromif.crypto.tink.keyset.AeadTemplate
 import io.gromif.notes.domain.model.AeadMode
 import io.gromif.ui.compose.core.Preference
 import io.gromif.ui.compose.core.dialogs.DialogsCore

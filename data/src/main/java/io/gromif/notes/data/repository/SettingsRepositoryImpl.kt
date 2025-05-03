@@ -4,7 +4,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
-import io.gromif.crypto.tink.model.KeysetTemplates
+import io.gromif.crypto.tink.keyset.KeysetTemplates
 import io.gromif.notes.domain.model.AeadMode
 import io.gromif.notes.domain.repository.SettingsRepository
 import kotlinx.coroutines.flow.Flow

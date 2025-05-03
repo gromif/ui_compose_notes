@@ -7,8 +7,8 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.gromif.astracrypt.utils.dispatchers.IoDispatcher
-import io.gromif.crypto.tink.extensions.getTemplateList
-import io.gromif.crypto.tink.model.KeysetTemplates
+import io.gromif.crypto.tink.core.extensions.getTemplateList
+import io.gromif.crypto.tink.keyset.KeysetTemplates
 import io.gromif.notes.domain.model.AeadMode
 import io.gromif.notes.domain.usecase.GetAeadPreferenceFlowUseCase
 import io.gromif.notes.presentation.settings.work.UpdateAeadWorker

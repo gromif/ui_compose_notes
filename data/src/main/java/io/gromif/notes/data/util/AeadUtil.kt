@@ -1,12 +1,12 @@
 package io.gromif.notes.data.util
 
 import com.google.crypto.tink.Aead
+import io.gromif.crypto.tink.aead.AeadManager
+import io.gromif.crypto.tink.aead.decodeAndDecrypt
+import io.gromif.crypto.tink.aead.encryptAndEncode
 import io.gromif.crypto.tink.core.encoders.Base64Encoder
-import io.gromif.crypto.tink.data.AeadManager
-import io.gromif.crypto.tink.data.AssociatedDataManager
-import io.gromif.crypto.tink.extensions.decodeAndDecrypt
-import io.gromif.crypto.tink.extensions.encryptAndEncode
-import io.gromif.crypto.tink.model.KeysetTemplates
+import io.gromif.crypto.tink.keyset.KeysetTemplates
+import io.gromif.crypto.tink.keyset.associated_data.AssociatedDataManager
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
